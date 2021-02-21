@@ -1,0 +1,10 @@
+{{define "tasks"}}
+{{template "header"}}
+<h2>Tasks</h2>
+<ul class="list pl3">
+	{{range $i, $e := . -}}
+		<li class="pb2"><a href="/task/input/{{$i}}" class="dim link near-white b">{{.Name}}</a></li>
+	{{- end}}
+</ul>
+{{template "footer"}}
+{{end}}

@@ -1,0 +1,30 @@
+{{define "logs"}}
+{{template "header"}}
+<h2>Logs</h2>
+<table class="collapse ba br2 b--white-10 pv2 ph3">
+	<thead>
+		<tr class="bg-black-30">
+			<th class="pv2 ph3 tl f6 fw6">Created</th>
+			<th class="pv2 ph3 tl f6 fw6">Name</th>
+			<th class="pv2 ph3 tl f6 fw6">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{range . -}}
+			<tr class="stripe-dark">
+				<td class="pv2 ph3">{{.Created}}</td>
+				<td class="pv2 ph3">
+					<a href="/log/view/{{.ID}}/r" class="dim link near-white b">{{.Name}}</a>
+				</td>
+				<td class="pv2 ph3">
+					<form action="/log/del" method="post" class="di">
+						<input type="hidden" name="id" value="{{.ID}}">
+						<input type="submit" value="Delete" class="link bg-transparent bn pa0 dim white b">
+					</form>
+				</td>
+			</tr>
+		{{- end}}
+	</tbody>
+</table>
+{{template "footer"}}
+{{end}}
