@@ -1,0 +1,12 @@
+{{define "taskInputs"}}
+{{template "header"}}
+<h2>Run task "{{.Name}}"</h2>
+<form action="/task/run" method="post">
+	<input type="hidden" name="id" value="{{.ID}}">
+	{{range $i, $e := .Inputs -}}
+		<input class="input-reset ba br3 b--mid-gray pa2 mb3 db w-100 outline-0" placeholder="{{.}}" type="text" name="I{{$i}}">
+	{{- end}}
+	<input type="submit" value="Run">
+</form>
+{{template "footer"}}
+{{end}}
